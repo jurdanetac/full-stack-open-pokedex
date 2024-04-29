@@ -38,7 +38,7 @@ jobs:
           if: success()
           with:
               text: A new version of Pokedex deployed
-              details: 'to ${{ secrets.URL }} by ${{ github.event.commits[0].author.username }}'
+              details: to ${{ secrets.URL }} by ${{ github.event.commits[0].author.username }}
               severity: info
               webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
               description: ''
