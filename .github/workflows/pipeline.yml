@@ -35,7 +35,7 @@ jobs:
           run: curl "https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}"
         - name: Success discord notification
           uses: rjstone/discord-webhook-notify@v1.0.4
-          if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }} && success()
+          if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') && success() }}
           with:
               severity: info
               text: A new version of Pokedex deployed
@@ -43,7 +43,7 @@ jobs:
               webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
         - name: Failure discord notification
           uses: rjstone/discord-webhook-notify@v1.0.4
-          if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }} && failure()
+          if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') && failure() }}
           with:
               severity: error
               text: Build failed
