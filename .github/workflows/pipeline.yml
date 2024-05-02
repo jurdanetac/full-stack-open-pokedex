@@ -39,7 +39,7 @@ jobs:
           with:
               severity: info
               text: A new version of Pokedex deployed
-              description: to ${{ secrets.URL }} by ${{ github.event.actor }}
+              description: to ${{ secrets.URL }} by ${{ github.actor }}
               webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
         - name: Failure discord notification
           uses: rjstone/discord-webhook-notify@v1.0.4
